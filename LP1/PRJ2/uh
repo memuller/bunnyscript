@@ -1,0 +1,9 @@
+>leitura do texto digitado pelo usuário
+>função aplicada usando duas variáveis como argumentos
+
+>percorrer de 0 à strlen(source) procurando os \x's
+>switch com as condicionais para cada um
+>pelo default, ir criando uma nova string com os mesmos caracteres da que foi lida
+>quando encontrar um dos caracteres, fazer um novo for usando j=posição do caracter encontrado
+ e copiar todos os caracteres a partir desta posição em uma nova string com suas respectivas posições
+ sendo aumentadas em 1
