@@ -1,0 +1,23 @@
+Trab 3 - Leitura de arquivo binário
+
+Faça um programa que leia um arquivo de imagem no formato PGM na variante P5 e apresente na tela do terminal  o conteúdo correspondente ao formato PGM variante P2. Caso o arquivo não seja encontrado, seu programa deve escrever no canal de erro a string "Erro: arquivo inexistente\n" e sua execução deve ser interrompida.
+
+Links úteis sobre a variantes do formato de imagem pgm:http://en.wikipedia.org/wiki/Netpbm_format#PGM_example
+http://netpbm.sourceforge.net/doc/pgm.html
+
+Exemplo de resultado da análise do arquivo
+
+P2
+# A diagonal line 10 pixels wide and 10 pixels high
+10 10
+255
+  0 255 255 255 255 255 255 255 255 255
+255   0 255 255 255 255 255 255 255 255
+255 255   0 255 255 255 255 255 255 255
+255 255 255   0 255 255 255 255 255 255
+255 255 255 255   0 255 255 255 255 255
+255 255 255 255 255   0 255 255 255 255
+255 255 255 255 255 255   0 255 255 255
+255 255 255 255 255 255 255   0 255 255
+255 255 255 255 255 255 255 255   0 255
+255 255 255 255 255 255 255 255 255   0

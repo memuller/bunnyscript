@@ -1,0 +1,28 @@
+--ARQUIVO ORIGINAL
+
+P5
+# A diagonal line 10 pixels wide and 10 pixels high
+10 10
+255
+������������������������������������������������������������������������������������������
+
+--ARQUIVO COMO DEVE FICAR 
+
+P2
+# A diagonal line 10 pixels wide and 10 pixels high
+10 10
+255
+0 255 255 255 255 255 255 255 255 255
+255 0 255 255 255 255 255 255 255 255
+255 255 0 255 255 255 255 255 255 255
+255 255 255 0 255 255 255 255 255 255
+255 255 255 255 0 255 255 255 255 255
+255 255 255 255 255 0 255 255 255 255
+255 255 255 255 255 255 0 255 255 255
+255 255 255 255 255 255 255 0 255 255
+255 255 255 255 255 255 255 255 0 255
+255 255 255 255 255 255 255 255 255 0
+
+--DIFERENÇAS
+- a primeira linha deve dizer "P2" ao invés de "P5"
+- o monte de caracteres estranhos ali - da quarta linha em diante - devem ser impressos como caracteres ASCII.

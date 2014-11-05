@@ -1,0 +1,30 @@
+use o botão "run" para executar seu código.
+
+primeiro só abra o arquivo (mostrando uma mensagem de erro caso ele não exista). vá por partes.
+teste isso e faça o teste 2 do mota passar.
+
+não se esqueça de abrir o arquivo usando a flag "b", por ele ser binário. por exemplo, fopen(arquivo, "rb");
+
+entenda a diferença entre os arquivos desejados no arquivo
+
+para imprimir um byte como valor numérico, você pode usar
+printf(“%u”, caracter);
+
+você deve imprimir as quatro primeiras linhas do programa normalmente; e as seguintes com o %u.
+
+
+
+exemplo de algoritmo (não leia se quiser tentar sozinha antes)
+.
+.
+.
+.
+.
+
+
+ler nome do arquivo
+abrir este arquivo
+exibir mensagem de erro e abortar caso arquivo não exista
+imprimir caracter por caracter das quatro primeiras linhas usando printf("%c")
+(caso o caracter seja o segundo, imprimir "2" ao invés de "5")
+imprimir o restante dos caracteres usando printf("%u")
