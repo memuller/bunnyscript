@@ -1,0 +1,27 @@
+
+Comments Test 1: teste1  
+Incorrect program result 
+
+--- Input --- 
+
+--- Program output --- 
+hehe eu countero
+
+ --- Expected output (exact text)--- 
+ALEXANDRE DA COSTA SENA                           |45678912364|007|52627|471239-9|5364.70
+ALEXANDRE ROJAS                                   |45789614789|027|12458|032578-9|2338.70
+ALEXANDRE SZTAJNBERG                              |45567897464|004|67861|214587-4|17598.00
+GUILHERME LUCIO ABELHA MOTA                       |45896523688|033|12456|035698-7|3688.20
+LEANDRO AUGUSTO JUSTEN MARZULO                    |47896461234|024|45758|124598-8|2157.00
+MARIA ALICE SILVERIO DE BRITO                     |45678912364|011|12378|011457-8|5788.50
+MARIA CLICIA STELLING DE CASTRO                   |78721425451|033|14898|125878-9|2675.96
+PAULO EUSTAQUIO DUARTE PINTO                      |01129257869|001|01246|032123-7|6360.00
+ROSA MARIA ESTEVES DA COSTA                       |12345858778|001|23456|078459-8|1437.60
+VERA MARIA BENJAMIM WERNECK                       |65432198734|456|14583|189456-8|5935.16
+
+
+ Summary of tests 
++------------------------------+
+|  1  test run/ 1  test failed |
++------------------------------+
+  

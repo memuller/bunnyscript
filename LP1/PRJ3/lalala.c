@@ -17,7 +17,7 @@ int main()
     int i;
     char * buffer;
     char file_name[50];
-    int rows, cols, at_char = 0 ;
+    int rows, cols, at_char = 1 ;
     
     // we need to keep track of lines so we know when when to switch from printing
     // ASCII chars or their integer values.
@@ -47,6 +47,7 @@ int main()
     
     // loops on every byte of the buffer
     for(i = 0; i < file_len; i++){
+        at_char++; 
         // a char.
         unsigned char c = buffer[i];
         // if it's a comment, we need to consider an additional line when
@@ -57,24 +58,17 @@ int main()
             line_count++; 
             printf("%c",'\n'); 
             continue;
+            at_char = 0;
         }
         // if we're over the metadata section...
         if(line_count > metadata_lines){
             // ...them it means we're into the binary chars section
             // print their unsigned decimal values.
-            at_char++;
-            if(at_char > 1){ printf("%c", ' '); }
-            if(c == 0){
-                printf("  %u",c);
-            } else {
-                printf("%u", c);
-            }
-            
-            if(at_char >= 10){ printf("%c", '\n'); at_char=0;}
+            printf("%u ",c); 
         } else {
             // otherwise it's still metadata. print as common ASCII chars.
             printf("%c", c); 
-            
+            if(at_char >= 10){ printf("%c", '\n'); }
         }
         
     }
