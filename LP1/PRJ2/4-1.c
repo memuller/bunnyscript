@@ -17,8 +17,10 @@ int main()
 {
     FILE *fp;
     int numLinhas, numCarac, numCi;
-    scanf=""
-    fp = fopen("lalala.txt", "r"); /* wrong */
+    char nomeArq[10];
+    
+    scanf=("%s", nomeArq);
+    fp = fopen("texto.txt", "r");
     
 }
 

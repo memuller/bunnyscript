@@ -4,11 +4,13 @@
 
 
 struct Worker {
-    char name[51];
+    char name[55];
     char id[13];
     char address[66];
     char cpf[12];
-    char bank[6];
+    char bank[4];
+    char bank_box[6];
+    char bank_account[9];
     float hourly_rate;
 };
 
@@ -25,76 +27,83 @@ int main()
     FILE *november_file;
     
     struct Worker workers[15];
+    struct Worker temp;
     struct Month november[15];
     
     int max_entries = 10;
     
-    int i, pos = 0; char line[200];
-    char buffer[65]; int pos_word = 0;
+    int i, j, pos = 0; char line[200];
+    
     workers_file = fopen("Funcionarios.txt", "r");
     while(fgets(line, sizeof(line), workers_file) != NULL){
         if(i >= max_entries) break;
-        for(pos = 0; pos < strlen(line); pos++){
-            if(line[pos] != '\n'){
-                buffer[pos_word] = line[pos];
-            } else {
-                workers[i].hourly_rate = atof(buffer);
-            }
-            switch(pos){
-                case 50:
-                    buffer[pos]= '\0';
-                    strcpy(workers[i].name, buffer);
-                    pos_word=0; 
-                break;
-                case 50+12:
-                    buffer[pos]= '\0';
-                    strcpy(workers[i].id, buffer);
-                    pos_word=0;
-                break;
-                case 50+12+65:
-                    buffer[pos]= '\0';
-                    strcpy(workers[i].address, buffer);
-                    pos_word=0;
-                break;
-                case 50+12+65+11:
-                    buffer[pos]= '\0';
-                    strcpy(workers[i].cpf, buffer);
-                    pos_word=0;
-                break;
-                case 50+12+65+11+5:
-                    buffer[pos]= '\0';
-                    strcpy(workers[i].bank, buffer);
-                    pos_word=0;
-                break;
-                default:
-                    pos_word++;
-                break;
-            }
-            
-            if(pos_word == 0){
-                memset(buffer,0,sizeof(buffer));
-            }
-        }
-        pos_word = 0;
-        memset(buffer,0,sizeof(buffer));
+        memcpy(workers[i].name, &line[0], 50);
+        workers[i].name[50]= '\0';
+        
+        memcpy(workers[i].id, &line[51], 12);
+        workers[i].id[12]= '\0';
+        
+        memcpy(workers[i].address, &line[64], 65);
+        workers[i].address[65]= '\0';
+        
+        memcpy(workers[i].cpf, &line[130], 11);
+        workers[i].cpf[11]= '\0';
+        
+        memcpy(workers[i].bank, &line[142], 3);
+        workers[i].bank[3]= '\0';
+        
+        memcpy(workers[i].bank_box, &line[146], 5);
+        workers[i].bank_box[5]= '\0';
+        
+        memcpy(workers[i].bank_account, &line[152], 8);
+        workers[i].bank_account[8]= '\0';
+        
+        char rate[5];
+        memcpy(rate, &line[161], sizeof(line)-161-1);
+        workers[i].hourly_rate = atof(rate);
+        
         i++;
         
     }
     fclose(workers_file);
     
     november_file = fopen("Novembro.txt", "r");
-    i = 0; pos = 0; pos_word = 0;
+    i = 0;
     while(fgets(line, sizeof(line), november_file) != NULL){
         if(i >= max_entries) break;
         char* piece;
         piece = strtok(line, "/");
-        november[i].id = *piece;
+        strcpy(november[i].id, piece);
         piece = strtok(NULL, "/");
-        november[i].hours = atof(*piece);
-        
-        printf("%s - %i\n", november[i].id, november[i].hours);
+        november[i].hours = atof(piece);
         i++;
     }
     fclose(november_file);
+    
+    for(i = 0; i < max_entries -1; i++){
+        for(j = 0; j < max_entries -1; j++){
+            if(strcmp(workers[j].name, workers[j+1].name) > 0){
+                temp = workers[j];
+                workers[j] = workers[j+1];
+                workers[j+1] = temp;
+            }
+        }
+    }
+    
+    for(i=0; i < max_entries; i++){
+        float salary;
+        for(j=0; j < max_entries; j++){
+            if(strcmp(workers[i].id,november[j].id) == 0){
+                salary = workers[i].hourly_rate * november[j].hours;
+                break;
+            }
+        }
+        printf("%s|%s|%s|%s|%s|%.2f\n", 
+            workers[i].name, workers[i].cpf, workers[i].bank, 
+            workers[i].bank_box, workers[i].bank_account,
+            salary
+        );
+        
+    }
     
 }

@@ -2,7 +2,7 @@
 // For more information see http://docs.c9.io:8080/#!/api/run-method-run
 {
     "cmd" : ["bash", "--login", "-c", 
-        "gcc $file -o $file_base_name.bin ; ./$file_base_name.bin"
+        "gcc $file -o $file_base_name.bin -lm; ./$file_base_name.bin"
     ],
     "info" : "Started $project_path$file_name",
     "working_dir": "$file_path",
