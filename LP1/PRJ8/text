@@ -1,0 +1,10 @@
+Trabálho 7 - Produto de Matrizes com alocação fragmentada por linhaEscreva um programa na 
+linguagem C que calcule o produto de duas matrizes A e B, produzindo como saída A x B 
+("A vezes B"). A matrizes A e B estão armazenadas na variante P2 do formato de arquivo 
+de imagem PGM. Caso as dimensões das matrizes sejam incompatíveis, seu programa deve 
+escrever em stdout a mensagem "Erro dimensoes incompatveis\n", caso contrário o 
+programa deve escrever em stdout o resultado do produto expresso também no formato PGM 
+variante P2. 
+Seu programa receberá através de stdin duas linhas. Na primeira será fornecido o nome 
+do arquivo relativo à matriz A e na segunda o nome do arquivo relativo à matriz B. 
+Requisitos não funcionais do programa
