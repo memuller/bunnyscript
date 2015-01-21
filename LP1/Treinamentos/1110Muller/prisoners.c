@@ -39,11 +39,42 @@
     sendo cada linha correspondente a um turno.
     
     # ATIVIDADE 6
-    Caso o arquivo "log.txt" já exista, adicionar o registro dos turnos atuais, ao invés de substituir.
-    Ou seja, caso o programa seja executado duas vezes, a segunda execução não deve apagar os registros
-    da primeira, e sim adicioná-los em seguida.
+    Armazene um histórico das jogadas em uma variável global.
+    Esta variável deve ser um array, onde cada elemento representa as jogadas em um turno do jogo.
+    Cada turno do jogo deve ser representado por um array com dois elementos, no formato:
+
+    { 0, 1 } // sua decisão; decisão do oponente
     
-    #
+    Quando precisar de informações sobre a última jogada, acesse a última posição deste array
+    (substituindo como isso é feito atualmente).
+    
+    # ATIVIDADE 7
+    Atualmente, a decisão do oponente é "tomada" por uma função - random_opponent.
+    Renomeie esta função para random_player.
+    
+    Agora, de forma análoga, pegue o comportamento do jogador atual - a forma pela
+    qual ele decide que jogadas realizar - e transforme em uma função chamada 
+    cooperative_player:
+        int cooperative_player(int turnos)
+        * cujo parâmetro é o turno atual, um inteiro;
+        * que retorna a decisão do jogador para este turno.
+    
+    Ela deve consultar informações dos turnos anteriores usando a variável global do histórico
+    do jogo, caso necessário.
+    
+    # ATIVIDADE 8
+    Crie funções, seguindo o mesmo formato da cooperative_player, mas representando os seguintes
+    jogadores:
+    
+    always_cooperates: um jogador que sempre coopera;
+    always_betrays: um jogador que sempre trai;
+    human_player: um jogador humano - lê do teclado qual será a jogada.
+    
+    # ATIVIDADE 9
+    Ao iniciar o programa, use fscanf para ler, junto do número de turnos,
+    * qual das funções será usada como "jogador",
+    * qual das funções será usada como "oponente".
+    e realize o jogo utilizando as respectivas funções.
 */
 
 #include <stdio.h>
