@@ -1,4 +1,4 @@
-Trabálho 7 - Produto de Matrizes com alocação fragmentada por linhaEscreva um programa na 
+Trabálho 7 - Produto de Matrizes com alocação fragmentada por linha Escreva um programa na 
 linguagem C que calcule o produto de duas matrizes A e B, produzindo como saída A x B 
 ("A vezes B"). A matrizes A e B estão armazenadas na variante P2 do formato de arquivo 
 de imagem PGM. Caso as dimensões das matrizes sejam incompatíveis, seu programa deve 
