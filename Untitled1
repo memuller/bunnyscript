@@ -1,0 +1,47 @@
+; a base de condicionais no assembly vem do uso de comandos de branch
+; para ir até um bloco com uma label específica, assim 'pulando'
+; um trecho do código.
+
+; if (v != t){
+;     v = v+1
+; }
+        beq $v0, $t0, skip ;vai para skip se v0 == t0 
+        addi $v0, $v0, 1 ;isso só vai ser executado se não tivermos pulado para skip
+skip: ;a label skip
+
+; note como a condição acaba ficando 'invertida', pois em C você executa o bloco
+; de código do if se a condição for verdadeira, pulando-o se ela for falsa
+; mas em assembly você vai pular se a condição for verdadeira e prosseguir
+; se for falsa; pela natureza dos comandos de branch.
+; beq: branch on equal; bne: branch on not equal.
+
+; implemente o seguinte código C em assembly:
+; if (a > b){
+;    a = b
+; }
+
+; for (i=0; i<100; i++) {
+; c [i] = a +10;
+; a++;
+; }
+
+lw $t0, 8($gp); posição inicial do array começando em global+8 
+li $t1, 0 ; i 
+li $t5, 0; offset de i
+lw $t2, 4($gp) ; lê valor de A
+loop:
+    sltui $t3, $t1, 100 ; t3 = 1 se i < 100 
+    beq  $t3, $zero, skip ; pula para skip se t3 == 0, 
+    ; ou seja, se comparação anterior for falsa
+    
+    li $t4, 0 ; temporária para ter a soma de a+10; zerada
+    addi $t4, $t2, 10 ; a+10
+    
+    sw ($t4, ($t0, $t5) ;armazena em posição inicial+offset de i 
+    
+    addi $t2, $t2, 1 ; a++
+    addi $t1, $t1, 1 ; i++
+    addi $t5, $t5, 4; offset de i+=4
+    
+    j loop ; volta pro começo do loop
+skip: ; fim

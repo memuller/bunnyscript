@@ -1,0 +1,32 @@
+SP Campinas
+AP Calçonete
+MG Itajubá
+AP Amapá
+AP Ferreira Gomes
+SP Presidente Prudente
+RJ Cabo Frio
+MG Tiradentes
+RJ Queimados
+RJ Três Rios
+AP Pracuuba
+AP Oiapoque
+RJ Mende
+MG Belo Horizonte
+RJ Mangaratiba
+RJ Japeri
+AP Porto Grande
+AP Santana
+RJ Angra dos Reis
+RJ Arraial do Cabo
+MG Queluz
+RJ Barra Mansa
+AP Macapá
+MG Piquete
+MG Santa Mônica
+RJ Barra do Piraí
+RJ Rio de Janeiro
+SP Cruzeiro
+RJ Itatiaia
+SP Lorena
+RJ Itaperuna
+RJ Duas Barras
