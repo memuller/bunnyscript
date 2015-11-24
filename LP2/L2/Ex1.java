@@ -63,3 +63,10 @@ Faça a previsão de mensagens de erro (em janelas pop-up ou campos de texto).
 Utilize componentes adicionais ou recursos que você junge necessários.
 O applet deve ser acessado pela Internet, através da URL: 152.92.236.11/~<seu login>
 Para isso você vai precisar criar um diretório public_html, dentro do seu diretório home e, lá dentro, um arquivo index.html com as permissões e o conteúdo adequado, além das classes em Java. */
+
+class Pessoa{
+    public Pessoa(String nome){
+        this.nome = nome;
+        // this.dataNasc =
+    }
+}
