@@ -38,6 +38,7 @@ class Humano {
 	public int identificador;
 	public String genero;
 	public Banheiro banheiro;
+	public int status = 0; /* -1: inside toilet; 0: outside toilet; < 0: queue position  */
 	public static String[] genders = {"Homem", "Mulher"};
 
 	Humano(Banheiro banheiro, int identificador){
@@ -57,13 +58,13 @@ class Banheiro {
 	public int quantidade ;
 	public int capacidade = 5;
 	public Humano[] cabines;
-	public Hashtable<String,Integer> line = new Hashtable<String,Integer>();
+	public Hashtable<String,Integer> queue = new Hashtable<String,Integer>();
 
 	Banheiro() {
 		cabines = new Humano[capacidade];
 
-		line.put(Humano.genders[0], 0);
-		line.put(Humano.genders[1], 0);
+		queue.put(Humano.genders[0], 0);
+		queue.put(Humano.genders[1], 0);
 	}
 
 	public int findEmptyCabin(){
@@ -96,7 +97,7 @@ class Banheiro {
 		 	if(!human.genero.equals(gender))
 		 		return false;
 		 }
-		 return true; 
+		 return true;
 	}
 
 	public int numGender(String gender){
@@ -109,33 +110,69 @@ class Banheiro {
 		return count;
 	}
 
-	public int numFemales(){ return numGender("Mulher"); }
-	public int numMales(){ return numGender("Homem"); }
-
 	public boolean deservesToEnter(Humano h){
-		return true;
+		int numSame = numGender(h.genero);
+		int numOther = numGender(h.genero);
+		int numQueueSame = queue.get(h.genero);
+		int numQueueOther;
+		if(h.genero.equals(Humano.genders[0]))
+			numQueueOther = queue.get(Humano.genders[1]);
+		else
+			numQueueOther = queue.get(Humano.genders[0]);
+
+		if(numSame > 0){
+			return numQueueOther < numSame;
+		} else {
+			return numQueueSame > numOther;
+		}
+	}
+
+	private void getIn(Humano h, int empty_cabin){
+		cabines[empty_cabin] = h;
+		queue.put(h.genero, queue.get(h.genero)-1);
+		h.status = -1;
+	}
+
+	private void getOut(int cabin){
+		cabines[cabin].status = 0;
+		cabines[cabin] = null;
 	}
 
 	public void entraBanheiro(Humano h){
 		String gender = h.genero;
 		int empty_cabin = findEmptyCabin();
+		boolean canGetIn = true;
+		try {
+			if(empty_cabin == -1)
+				throw(new BanheiroOcupado());
 
-		if(empty_cabin == -1)
-			throw(new BanheiroOcupado());
-
-		if(!genderMatch(h))
-			throw(new Alerta());
-
-		cabines[empty_cabin] = h;
-
-
-		System.out.println(h.genero + " " + h.identificador + " Entrou");
+			if(!genderMatch(h))
+				throw(new Alerta());
+		} catch(VaiPraFila e){
+			canGetIn = false;
+			int genderQueue = queue.get(h.genero);
+			queue.put(h.genero, genderQueue++);
+			h.status = genderQueue;
+			System.out.println(h.genero + " " + h.identificador + " na fila " + h.status);
+		}
+		if(canGetIn){
+			getIn(h, empty_cabin);
+			System.out.println(h.genero + " " + h.identificador + " Entrou");
+		}
 	}
 
 	public void saiBanheiro(){
 		if(isEmpty())
 			throw(new BanheiroVazio());
-
+		int i = 0;
+		for(Humano human : cabines){
+			if(human != null){
+				getOut(i);
+				System.out.println(human.genero + " " + human.identificador + "Saiu");
+				break;
+			}
+			i++;
+		}
 	}
 
 
